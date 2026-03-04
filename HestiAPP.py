@@ -30,10 +30,10 @@ DATA_VOZIDLA = {
 }
 
 KAT_MAP = {
-    "MAN nové": "MAN nové",
-    "Návěsy nové": "Návěsy nové",
-    "MAN TGE": "MAN TGE",
-    "Ojetá vozidla": "Ojetá vozidla",
+    "MAN nové": "MAN_nové",
+    "Návěsy nové": "Návěsy_nové",
+    "MAN TGE": "MAN_TGE",
+    "Ojetá vozidla": "Ojetá_vozidla",
     "Noční stání": "Vlastní"
 }
 
@@ -180,3 +180,4 @@ elif st.session_state.stranka == "odjezd": stranka_odjezd()
 elif st.session_state.stranka.startswith("list_"):
     sheet = st.session_state.stranka.replace("list_", "")
     stranka_seznam(sheet, sheet)
+
