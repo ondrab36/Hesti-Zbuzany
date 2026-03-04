@@ -5,3 +5,4 @@ easyocr
 numpy
 Pillow
 fpdf2
+st-gsheets-connection
