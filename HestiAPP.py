@@ -40,17 +40,23 @@ KAT_MAP = {
 # --- FUNKCE: ZÁPIS PŘÍJEZDU (Google Sheets) ---
 def zapsat_do_gsheets(list_name, vyrobce, druh, vin, kode, poznamka):
     try:
+        # Přečteme aktuální data
         df = conn.read(worksheet=list_name)
+        
+        # Vytvoříme nový řádek (ID vynecháme, nebo ho dáme jako text)
         new_row = pd.DataFrame([{
-            "ID": len(df) + 1,
-            "Výrobce": vyrobce,
-            "Druh": druh if druh else "",
-            "VIN/WERK": vin,
-            "KÓDE": kode,
-            "Poznámka": poznamka,
+            "Výrobce": str(vyrobce),
+            "Druh": str(druh),
+            "VIN/WERK": str(vin),
+            "KÓDE": str(kode),
+            "Poznámka": str(poznamka),
             "Čas příjezdu": datetime.datetime.now().strftime("%d.%m.%Y %H:%M")
         }])
+        
+        # Spojíme to
         updated_df = pd.concat([df, new_row], ignore_index=True)
+        
+        # Zapíšeme zpět
         conn.update(worksheet=list_name, data=updated_df)
         return True
     except Exception as e:
@@ -180,5 +186,6 @@ elif st.session_state.stranka == "odjezd": stranka_odjezd()
 elif st.session_state.stranka.startswith("list_"):
     sheet = st.session_state.stranka.replace("list_", "")
     stranka_seznam(sheet, sheet)
+
 
 
