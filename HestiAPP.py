@@ -30,11 +30,11 @@ DATA_VOZIDLA = {
 }
 
 KAT_MAP = {
-    "MAN nové": "MAN_nové",
-    "Návěsy nové": "Návěsy_nové",
+    "MAN nové": "MAN_nove",
+    "Návěsy nové": "Navesy_nove",
     "MAN TGE": "MAN_TGE",
-    "Ojetá vozidla": "Ojetá_vozidla",
-    "Noční stání": "Vlastní"
+    "Ojetá vozidla": "Ojeta_vozidla",
+    "Noční stání": "Vlastni"
 }
 
 # --- FUNKCE: ZÁPIS PŘÍJEZDU (Google Sheets) ---
@@ -180,4 +180,5 @@ elif st.session_state.stranka == "odjezd": stranka_odjezd()
 elif st.session_state.stranka.startswith("list_"):
     sheet = st.session_state.stranka.replace("list_", "")
     stranka_seznam(sheet, sheet)
+
 
